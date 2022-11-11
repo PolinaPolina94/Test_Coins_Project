@@ -1,6 +1,10 @@
 import axios from "axios"; 
 import React, { useEffect, useState } from 'react'; 
 import classes from './Table.module.css'
+// import CoinInfo from "../Coin/CoinInfo";
+// import { Routes, Route } from "react-router-dom";
+import Coins from "../Coin/Coins"
+
 
 function Table() {
 
@@ -14,8 +18,8 @@ function Table() {
     getCoins();
     }, [])
 
-
     return (
+        <>
         <div className={classes.table}>
             <table>
                 <thead>
@@ -33,25 +37,31 @@ function Table() {
                         <th>vwap24Hr</th>
                     </tr>
                 </thead>
-                <tbody>
+                
+                    
         {coins.map(coin => (
-            <tr key={coin.id}> 
-            <td key={coin.id}> {coin.id} </td>
-            <td key={coin.rank}> {coin.rank} </td>
-            <td key={coin.symbol}> {coin.symbol} </td>
-            <td key={coin.name}> {coin.name} </td>
-            <td key={coin.supply}> {coin.supply} </td>
-            <td key={coin.maxSupply}> {coin.maxSupply} </td>
-            <td key={coin.marketCapUsd}> {coin.marketCapUsd} </td>
-            <td key={coin.volumeUsd24Hr}> {coin.volumeUsd24Hr} </td>
-            <td key={coin.priceUsd}> {coin.priceUsd} </td>
-            <td key={coin.changePercent24Hr}> {coin.changePercent24Hr} </td>
-            <td key={coin.vwap24Hr}> {coin.vwap24Hr} </td>
+            <tbody>
+            <tr> 
+            <Coins name={coin.id}/>
+            <td > {coin.rank} </td>
+            <td > {coin.symbol} </td>
+            <td > {coin.name} </td>
+            <td > {coin.supply} </td>
+            <td > {coin.maxSupply} </td>
+            <td > {coin.marketCapUsd} </td>
+            <td > {coin.volumeUsd24Hr} </td>
+            <td > {coin.priceUsd} </td>
+            <td > {coin.changePercent24Hr} </td>
+             <td > {coin.vwap24Hr} </td>
             </tr>
+            </tbody>
           ))}
-</tbody>
+        
+
+
             </table>
         </div>
+        </>
     )
 };
 
