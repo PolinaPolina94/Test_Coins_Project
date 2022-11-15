@@ -1,4 +1,4 @@
-# Test coin's project
+# Test coins project
 
 ## in process...
 
