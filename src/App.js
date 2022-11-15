@@ -1,19 +1,36 @@
 import './App.css';
-import Main from './components/Main/Main';
-import CoinInfoPage from './components/Coin/CoinInfoPage';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import React from 'react';
+import axios from "axios";
+import { useEffect, useState } from 'react';
+import Table from './components/Table/Table';
+import CoinInfoPage from './components/Coin/CoinInfoPage';
+
 
 
 function App() {
+
+  const [coins, setCoins] = useState([]);
+
+  useEffect(() => {
+      const getCoins = async () => {
+          let response = await axios.get('https://api.coincap.io/v2/assets')
+          setCoins(response.data.data);
+      }
+      getCoins();
+  }, [])
+  
+  // let coinID = coins.map(coin => coin.id);
+  // console.log(coinID);
   return (
+    
     <div className="App">
 
       <div>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/:name' element={<CoinInfoPage/>} />
+            <Route exact path='/' element={<Table coins={coins} />} />
+            <Route exact path='/:coinID' element={<CoinInfoPage coins={coins}/>} />
             {/* <Route path="*" element={<div> Error 404  O-O-O-PS, something wrong. Don't know about this page :( </div>}/>  */}
           </Routes>
         </BrowserRouter>

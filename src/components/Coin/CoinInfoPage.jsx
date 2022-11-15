@@ -1,41 +1,33 @@
 import React from "react";
+import axios from "axios";
+import { useEffect, useState } from 'react';
+import {useParams} from "react-router-dom";
 
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import { useLocation, useNavigate, useParams } from "react-router-dom";
-
-
-// function withRouter(Component) {
-//    function ComponentWithRouterProp(props) {
-//        let location = useLocation();
-//        let navigate = useNavigate();
-//        let params = useParams();
-//        return (
-//            <Component
-//                {...props}
-//                router={{ location, navigate, params }}
-//            />
-//        );
-//    }
-//    return ComponentWithRouterProp;
-// }
+import CoinInfo from "./CoinInfo";
 
 
+function CoinInfoPage(props) {
 
-function CoinInfoPage() {
+const {coinID} = useParams()
+
+const [coinInfo, setCoinInfo] = useState([]);
+
+  useEffect(() => {
+      const getCoinsInfo = async () => {
+          let response = await axios.get(`https://api.coincap.io/v2/assets/${coinID}`)
+          setCoinInfo(response.data.data);
+      }
+      getCoinsInfo();
+  }, [coinID])
 
    return (
 
-      <div>
-
-         lalaal
+      <div>   
+         <CoinInfo coinInfo={coinInfo}></CoinInfo>
       </div>
-
-      /* <div> respons </div> */
-
+      
    )
-
-
+   
 };
 
 export default CoinInfoPage; 

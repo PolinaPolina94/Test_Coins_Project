@@ -1,10 +1,30 @@
 import React from "react";
-// import classes from './Coin.module.css' 
+import classes from './Coin.module.css'
+import { NavLink } from "react-router-dom";
 
-function CoinInfo() {
+
+function CoinInfo(props) {
+
     return (
+        <div className={classes.coinInfo}>
+            <div>
+        <div className={`${classes.coinInfoItem} ${classes.coinInfoWithButton}`}>{props.coinInfo.id}
+        <NavLink to={"/"}> <button className={classes.button}>Go back</button> </NavLink> 
+        </div>
+        <div className={classes.coinInfoItem}>Rank: {props.coinInfo.rank} </div>
+        <div className={classes.coinInfoItem}>Symbol:{props.coinInfo.symbol} </div>
+        <div className={classes.coinInfoItem}>Name: {props.coinInfo.name} </div>
+        <div className={classes.coinInfoItem}>Supply: {props.coinInfo.supply} </div>
+        <div className={classes.coinInfoItem}>MaxSupply: {props.coinInfo.maxSupply} </div>
+        <div className={classes.coinInfoItem}>MarketCapUsd: {props.coinInfo.marketCapUsd} </div>
+        <div className={classes.coinInfoItem}>VolumeUsd24Hr: {props.coinInfo.volumeUsd24Hr} </div>
+        <div className={classes.coinInfoItem}>PriceUsd: {props.coinInfo.priceUsd} </div>
+        <div className={classes.coinInfoItem}>ChangePercent24Hr: {props.coinInfo.changePercent24Hr} </div>
+        <div className={classes.coinInfoItem}>Vwap24Hr: {props.coinInfo.vwap24Hr} </div>
+        </div>
         <div>
-             <a href="/info"> Info </a> 
+            <img src="https://illustrators.ru/uploads/illustration/image/1392128/62jKdaoB_Dw.jpg" alt="grafic"></img>
+        </div>
         </div>
 
     )
