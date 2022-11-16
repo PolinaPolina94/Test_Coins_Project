@@ -23,17 +23,20 @@ function App() {
   // let coinID = coins.map(coin => coin.id);
   // console.log(coinID);
   return (
-    
+   
     <div className="App">
 
       <div>
         <BrowserRouter>
           <Routes>
-            <Route exact path='/' element={<Table coins={coins} />} />
-            <Route exact path='/:coinID' element={<CoinInfoPage coins={coins}/>} />
-            {/* <Route path="*" element={<div> Error 404  O-O-O-PS, something wrong. Don't know about this page :( </div>}/>  */}
+            <Route exact path="/" element={<Table coins={coins} />} />
+            
+            <Route path=":coinID" element={<CoinInfoPage coins={coins}/>} />
+            
+            {/* <Route path="*" element={<h2>Ресурс не найден</h2>} /> */}
           </Routes>
         </BrowserRouter>
+        
       </div>
 
     </div>

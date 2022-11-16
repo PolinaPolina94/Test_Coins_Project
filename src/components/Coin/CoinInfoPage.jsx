@@ -8,7 +8,12 @@ import CoinInfo from "./CoinInfo";
 
 function CoinInfoPage(props) {
 
-const {coinID} = useParams()
+// const {coinID} = useParams()
+
+const params = useParams()
+const coinID = params.coinID;
+// const coinID = params.id;
+console.log(coinID);
 
 const [coinInfo, setCoinInfo] = useState([]);
 

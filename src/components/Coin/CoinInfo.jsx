@@ -1,15 +1,17 @@
 import React from "react";
 import classes from './Coin.module.css'
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 function CoinInfo(props) {
+
+    const navigate = useNavigate();
 
     return (
         <div className={classes.coinInfo}>
             <div>
         <div className={`${classes.coinInfoItem} ${classes.coinInfoWithButton}`}>{props.coinInfo.id}
-        <NavLink to={"/"}> <button className={classes.button}>Go back</button> </NavLink> 
+        <button onClick={() => navigate(-1)} className={classes.button}>Go back</button>
         </div>
         <div className={classes.coinInfoItem}>Rank: {props.coinInfo.rank} </div>
         <div className={classes.coinInfoItem}>Symbol:{props.coinInfo.symbol} </div>
