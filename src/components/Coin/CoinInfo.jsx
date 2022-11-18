@@ -2,7 +2,6 @@ import React from "react";
 import classes from './Coin.module.css'
 import { useNavigate } from "react-router-dom";
 
-
 function CoinInfo(props) {
 
     const navigate = useNavigate();
