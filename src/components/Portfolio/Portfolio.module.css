@@ -1,0 +1,27 @@
+
+
+h2 {
+    font-size: 24px; 
+}
+
+/* .btn {
+    margin-left: 10px;
+    padding: auto;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+} */
+
+.list {
+    font-size: 16px;
+    text-align: left;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+.list li {
+    font-size: 16px;
+    text-decoration: underline;
+    color: blueviolet;
+}
