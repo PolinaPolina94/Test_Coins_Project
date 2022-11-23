@@ -14,7 +14,7 @@ function Coins(props) {
         <button
           className={classes.btn}
           onClick={() => {
-            props.addCoin(props.name, props.rank);
+            props.addCoin(props.name);
           }}
         >
           {" "}

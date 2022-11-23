@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Coin.module.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function CoinInfo(props) {
   const navigate = useNavigate();
@@ -15,6 +15,18 @@ function CoinInfo(props) {
           <button onClick={() => navigate(-1)} className={classes.button}>
             Go back
           </button>
+
+          <NavLink to={"/portfolio"}>
+            {" "}
+            <button
+              onClick={() => {
+                props.addCoin(props.coinInfo.name);
+              }}
+            >
+              {" "}
+              +{" "}
+            </button>{" "}
+          </NavLink>
         </div>
         <div className={classes.coinInfoItem}>Rank: {props.coinInfo.rank} </div>
         <div className={classes.coinInfoItem}>
@@ -42,12 +54,6 @@ function CoinInfo(props) {
         <div className={classes.coinInfoItem}>
           Vwap24Hr: {props.coinInfo.vwap24Hr}{" "}
         </div>
-      </div>
-      <div>
-        <img
-          src="https://illustrators.ru/uploads/illustration/image/1392128/62jKdaoB_Dw.jpg"
-          alt="grafic"
-        ></img>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { compose } from "redux";
 import { getCoinInfo } from "../../redux/coin-reducer";
 import CoinInfo from "./CoinInfo";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { addCoin } from "../../redux/portfolio-reducer";
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -16,20 +17,23 @@ function withRouter(Component) {
 }
 
 class CoinInfoContainer extends React.Component {
-  updateProfile() {
+  showCoinInfo() {
     let coinId = this.props.router.params.coinId;
     this.props.getCoinInfo(coinId);
   }
 
   componentDidMount() {
-    this.updateProfile();
+    this.showCoinInfo();
   }
 
   render() {
     return (
       <div>
         {" "}
-        <CoinInfo coinInfo={this.props.coinInfo} />{" "}
+        <CoinInfo
+          coinInfo={this.props.coinInfo}
+          addCoin={this.props.addCoin}
+        />{" "}
       </div>
     );
   }
@@ -43,7 +47,6 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { getCoinInfo }),
+  connect(mapStateToProps, { getCoinInfo, addCoin }),
   withRouter
 )(CoinInfoContainer);
-

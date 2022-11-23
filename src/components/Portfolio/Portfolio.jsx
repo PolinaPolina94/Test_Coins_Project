@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Item from "./Item";
 import classes from "./Portfolio.module.css";
 import PortfolioList from "./PortfolioList";
 

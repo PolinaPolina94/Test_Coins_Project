@@ -9,6 +9,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const MyPostContainer = connect(mapStateToProps, { addCoin })(Portfolio);
+const PortfolioContainer = connect(mapStateToProps, { addCoin })(Portfolio);
 
-export default MyPostContainer;
+export default PortfolioContainer;

@@ -26,11 +26,7 @@ function Table(props) {
           {props.coins.map((coin) => (
             <tbody>
               <tr>
-                <Coins
-                  id={coin.id}
-                  addCoin={props.addCoin}
-                  name={coin.name}
-                />
+                <Coins id={coin.id} addCoin={props.addCoin} name={coin.name} />
                 <td> {coin.rank} </td>
                 <td> {coin.symbol} </td>
                 <td> {coin.name} </td>
