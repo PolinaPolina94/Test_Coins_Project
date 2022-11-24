@@ -11,7 +11,7 @@ function Portfolio(props) {
       <button onClick={() => navigate(-1)} className={classes.button}>
         Go back
       </button>
-      <h2> MY COINS </h2>
+      <h2 className={classes.h2}> MY COINS </h2>
 
       <PortfolioList listOfMyCoins={props.listOfMyCoins} />
     </div>
