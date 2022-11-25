@@ -1,6 +1,13 @@
-import classes from "./Portfolio.module.css";
 import React from "react";
 import Item from "./Item";
+import styled from "styled-components";
+
+const List = styled.ol`
+  font-size: 16px;
+  text-align: left;
+  margin-left: 40px;
+  margin-top: 50px;
+`;
 
 function PortfolioList(props) {
   const coinElement = [...props.listOfMyCoins].map((c) => {
@@ -10,7 +17,7 @@ function PortfolioList(props) {
   return (
     <div>
       {coinElement.length > 0 ? (
-        <ol className={classes.list}> List: {coinElement} </ol>
+        <List> List: {coinElement} </List>
       ) : (
         <div> no coins </div>
       )}

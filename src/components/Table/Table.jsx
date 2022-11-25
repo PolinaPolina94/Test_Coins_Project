@@ -1,14 +1,34 @@
 import React from "react";
-import classes from "./Table.module.css";
+// import classes from "./Table.module.css";
 import Coins from "../Coin/Coins";
+import styled from "styled-components";
+
+const StyledTable = styled.table` {
+  background-color: blanchedalmond;
+  margin-top:10px;
+}
+`
+const Thead = styled.thead`
+background-color: #eee;
+`
+
+const Tr = styled.tr`
+ color: black;
+ border: 1px solid rgb(153, 169, 85);
+`
+const Td = styled.td`
+
+:hover {
+  background-color: yellow;
+}
+`
 
 function Table(props) {
   return (
     <>
-      <div className={classes.table}>
-        <table>
-          <thead>
-            <tr>
+             <StyledTable>
+          <Thead>
+            <Tr>
               <th>id</th>
               <th>rank</th>
               <th>symbol</th>
@@ -20,28 +40,27 @@ function Table(props) {
               <th>priceUsd</th>
               <th>changePercent24Hr</th>
               <th>vwap24Hr</th>
-            </tr>
-          </thead>
-
+            </Tr>
+          </Thead>
           {props.coins.map((coin) => (
             <tbody>
-              <tr>
+              <Tr>
                 <Coins id={coin.id} addCoin={props.addCoin} name={coin.name} />
-                <td> {coin.rank} </td>
-                <td> {coin.symbol} </td>
-                <td> {coin.name} </td>
-                <td> {coin.supply} </td>
-                <td> {coin.maxSupply} </td>
-                <td> {coin.marketCapUsd} </td>
-                <td> {coin.volumeUsd24Hr} </td>
-                <td> {coin.priceUsd} </td>
-                <td> {coin.changePercent24Hr} </td>
-                <td> {coin.vwap24Hr} </td>
-              </tr>
+                <Td> {coin.rank} </Td>
+                <Td> {coin.symbol} </Td>
+                <Td> {coin.name} </Td>
+                <Td> {coin.supply} </Td>
+                <Td> {coin.maxSupply} </Td>
+                <Td> {coin.marketCapUsd} </Td>
+                <Td> {coin.volumeUsd24Hr} </Td>
+                <Td> {coin.priceUsd} </Td>
+                <Td> {coin.changePercent24Hr} </Td>
+                <Td> {coin.vwap24Hr} </Td>
+              </Tr>
             </tbody>
           ))}
-        </table>
-      </div>
+        </StyledTable>
+     
     </>
   );
 }

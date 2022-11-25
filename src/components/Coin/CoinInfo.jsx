@@ -1,61 +1,77 @@
 import React from "react";
-import classes from "./Coin.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
+const Container = styled.div`
+  // display: inline;
+`;
+const BackButton = styled.button`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+`;
+const CoinInfoItem = styled.div`
+  background: #eee;
+  color: rgb(37, 30, 30);
+  border-bottom: 1px solid black;
+  font-size: 16px;
+  padding: 20px 10px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 5px;
+  width: 50%;
+`;
+const CoinInfoWithButtons = styled.div`
+  position: relative;
+  background: #eee;
+  color: rgb(37, 30, 30);
+  border-bottom: 1px solid black;
+  font-size: 16px;
+  padding: 20px 10px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 5px;
+  width: 50%;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+`;
 
 function CoinInfo(props) {
   const navigate = useNavigate();
 
   return (
-    <div className={classes.coinInfo}>
-      <div>
-        <div
-          className={`${classes.coinInfoItem} ${classes.coinInfoWithButton}`}
-        >
-          {props.coinInfo.id}
-          <button onClick={() => navigate(-1)} className={classes.button}>
-            Go back
-          </button>
+    <Container>
+      <CoinInfoWithButtons>
+        {props.coinInfo.id}
+        <BackButton onClick={() => navigate(-1)}>Go back</BackButton>
 
-          <NavLink to={"/portfolio"}>
+        <StyledNavLink to={"/portfolio"}>
+          {" "}
+          <button
+            onClick={() => {
+              props.addCoin(props.coinInfo.name);
+            }}
+          >
             {" "}
-            <button
-              onClick={() => {
-                props.addCoin(props.coinInfo.name);
-              }}
-            >
-              {" "}
-              +{" "}
-            </button>{" "}
-          </NavLink>
-        </div>
-        <div className={classes.coinInfoItem}>Rank: {props.coinInfo.rank} </div>
-        <div className={classes.coinInfoItem}>
-          Symbol:{props.coinInfo.symbol}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>Name: {props.coinInfo.name} </div>
-        <div className={classes.coinInfoItem}>
-          Supply: {props.coinInfo.supply}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          MaxSupply: {props.coinInfo.maxSupply}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          MarketCapUsd: {props.coinInfo.marketCapUsd}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          VolumeUsd24Hr: {props.coinInfo.volumeUsd24Hr}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          PriceUsd: {props.coinInfo.priceUsd}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          ChangePercent24Hr: {props.coinInfo.changePercent24Hr}{" "}
-        </div>
-        <div className={classes.coinInfoItem}>
-          Vwap24Hr: {props.coinInfo.vwap24Hr}{" "}
-        </div>
-      </div>
-    </div>
+            +{" "}
+          </button>{" "}
+        </StyledNavLink>
+      </CoinInfoWithButtons>
+      <CoinInfoItem>Rank: {props.coinInfo.rank} </CoinInfoItem>
+      <CoinInfoItem>Symbol:{props.coinInfo.symbol} </CoinInfoItem>
+      <CoinInfoItem>Name: {props.coinInfo.name} </CoinInfoItem>
+      <CoinInfoItem>Supply: {props.coinInfo.supply} </CoinInfoItem>
+      <CoinInfoItem>MaxSupply: {props.coinInfo.maxSupply} </CoinInfoItem>
+      <CoinInfoItem>MarketCapUsd: {props.coinInfo.marketCapUsd} </CoinInfoItem>
+      <CoinInfoItem>VolumeUsd24Hr: {props.coinInfo.volumeUsd24Hr}</CoinInfoItem>
+      <CoinInfoItem>PriceUsd: {props.coinInfo.priceUsd} </CoinInfoItem>
+      <CoinInfoItem>
+        ChangePercent24Hr: {props.coinInfo.changePercent24Hr}
+      </CoinInfoItem>
+      <CoinInfoItem>Vwap24Hr: {props.coinInfo.vwap24Hr} </CoinInfoItem>
+    </Container>
   );
 }
 
