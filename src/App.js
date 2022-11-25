@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import React from "react";
 // import Table from './components/Table/Table';
 import TableContainer from "./components/Table/TableContainer";
@@ -11,14 +11,14 @@ function App() {
   return (
     <div className="App">
       <div>
-        <BrowserRouter>
+        <HashRouter>
           <Header />
           <Routes>
             <Route exact path="/" element={<TableContainer />} />
             <Route exact path="/:coinId" element={<CoinInfoContainer />} />
             <Route exact path="/portfolio" element={<PortfolioContainer />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </div>
   );
