@@ -1,6 +1,9 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { addCoin } from "../../redux/portfolio-reducer";
+import { getCoinInfo } from "../../redux/coin-reducer";
 
 const Container = styled.div`
   // display: inline;
@@ -40,18 +43,23 @@ const StyledNavLink = styled(NavLink)`
 
 function CoinInfo(props) {
   const navigate = useNavigate();
+  const coinInfo = useSelector((state) => state.coins.coinInfo);
+  const dispatch = useDispatch();
+  const { coinId } = useParams();
+
+  dispatch(getCoinInfo(coinId));
 
   return (
     <Container>
       <CoinInfoWithButtons>
-        {props.coinInfo.id}
+        {coinInfo.id}
         <BackButton onClick={() => navigate(-1)}>Go back</BackButton>
 
         <StyledNavLink to={"/portfolio"}>
           {" "}
           <button
             onClick={() => {
-              props.addCoin(props.coinInfo.name);
+              dispatch(addCoin(coinInfo.name));
             }}
           >
             {" "}
@@ -59,18 +67,18 @@ function CoinInfo(props) {
           </button>{" "}
         </StyledNavLink>
       </CoinInfoWithButtons>
-      <CoinInfoItem>Rank: {props.coinInfo.rank} </CoinInfoItem>
-      <CoinInfoItem>Symbol:{props.coinInfo.symbol} </CoinInfoItem>
-      <CoinInfoItem>Name: {props.coinInfo.name} </CoinInfoItem>
-      <CoinInfoItem>Supply: {props.coinInfo.supply} </CoinInfoItem>
-      <CoinInfoItem>MaxSupply: {props.coinInfo.maxSupply} </CoinInfoItem>
-      <CoinInfoItem>MarketCapUsd: {props.coinInfo.marketCapUsd} </CoinInfoItem>
-      <CoinInfoItem>VolumeUsd24Hr: {props.coinInfo.volumeUsd24Hr}</CoinInfoItem>
-      <CoinInfoItem>PriceUsd: {props.coinInfo.priceUsd} </CoinInfoItem>
+      <CoinInfoItem>Rank: {coinInfo.rank} </CoinInfoItem>
+      <CoinInfoItem>Symbol:{coinInfo.symbol} </CoinInfoItem>
+      <CoinInfoItem>Name: {coinInfo.name} </CoinInfoItem>
+      <CoinInfoItem>Supply: {coinInfo.supply} </CoinInfoItem>
+      <CoinInfoItem>MaxSupply: {coinInfo.maxSupply} </CoinInfoItem>
+      <CoinInfoItem>MarketCapUsd: {coinInfo.marketCapUsd} </CoinInfoItem>
+      <CoinInfoItem>VolumeUsd24Hr: {coinInfo.volumeUsd24Hr}</CoinInfoItem>
+      <CoinInfoItem>PriceUsd: {coinInfo.priceUsd} </CoinInfoItem>
       <CoinInfoItem>
-        ChangePercent24Hr: {props.coinInfo.changePercent24Hr}
+        ChangePercent24Hr: {coinInfo.changePercent24Hr}
       </CoinInfoItem>
-      <CoinInfoItem>Vwap24Hr: {props.coinInfo.vwap24Hr} </CoinInfoItem>
+      <CoinInfoItem>Vwap24Hr: {coinInfo.vwap24Hr} </CoinInfoItem>
     </Container>
   );
 }

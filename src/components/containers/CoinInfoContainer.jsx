@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { getCoinInfo } from "../../redux/coin-reducer";
-import CoinInfo from "./CoinInfo";
+import CoinInfo from "../Coin/CoinInfo";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { addCoin } from "../../redux/portfolio-reducer";
 
@@ -39,14 +39,9 @@ class CoinInfoContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    coins: state.coins.coins,
-    coinInfo: state.coins.coinInfo,
-  };
-};
+
 
 export default compose(
-  connect(mapStateToProps, { getCoinInfo, addCoin }),
+  connect( { getCoinInfo, addCoin }),
   withRouter
 )(CoinInfoContainer);

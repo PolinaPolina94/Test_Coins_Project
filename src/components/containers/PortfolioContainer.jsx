@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Portfolio from "./Portfolio";
+import Portfolio from "../Portfolio/Portfolio";
 import { addCoin } from "../../redux/portfolio-reducer";
 
 const mapStateToProps = (state) => {
