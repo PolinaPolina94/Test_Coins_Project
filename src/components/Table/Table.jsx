@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Coins from "../Coin/Coins";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
@@ -25,15 +25,19 @@ const Td = styled.td`
   }
 `;
 
-function Table(props) {
+function Table() {
   const dispatch = useDispatch();
 
   const coins = useSelector((state) => state.coins.coins);
 
-  dispatch(getCoins());
+
+  useEffect(()=> {
+    dispatch(getCoins());
+  },[dispatch])
+  
 
   return (
-    <>
+    <>    
       <StyledTable>
         <Thead>
           <Tr>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
@@ -47,7 +47,12 @@ function CoinInfo(props) {
   const dispatch = useDispatch();
   const { coinId } = useParams();
 
-  dispatch(getCoinInfo(coinId));
+
+  useEffect(()=> {
+    dispatch(getCoinInfo(coinId));
+  }, [dispatch, coinId])
+
+  
 
   return (
     <Container>
