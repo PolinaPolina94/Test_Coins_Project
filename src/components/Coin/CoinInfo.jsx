@@ -47,12 +47,9 @@ function CoinInfo(props) {
   const dispatch = useDispatch();
   const { coinId } = useParams();
 
-
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getCoinInfo(coinId));
-  }, [dispatch, coinId])
-
-  
+  }, [dispatch, coinId]);
 
   return (
     <Container>

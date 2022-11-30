@@ -1,33 +1,49 @@
 import React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { closeModal } from "../../redux/modal-reducer";
 
 const ModalOverlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // transform: scale(1);
+  // transform: ${(props) => (props.active ? "scale(1)" : "scale(0)")};
 `;
-const ModalWindow = styled.div`
 
-  max-width: 500px;
+// const ModalOverlayActive = styled.div`
+// position: fixed;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.4);
+//   bottom: 0;
+//   display:flex;
+//   align-items: center;
+//   justify-content: center;
+//   transform: scale(0);
+// `
+
+const ModalWindow = styled.div`
+  width: 500px;
   height: 400px;
   background-color: white;
   margin: auto;
-  margin-top: 100px;
   padding: 20px;
   border-radius: 20px;
- 
-
 `;
 
 const ModalBody = styled.div`
-    font-size: 20px;
-    color: black;
-    height: 65%;
-    margin: auto;
-    padding-top: 20px;
-`
+  font-size: 20px;
+  color: black;
+  height: 65%;
+  margin: auto;
+  padding-top: 20px;
+`;
 
 const ModalClose = styled.div`
   text-align: right;
@@ -50,20 +66,30 @@ const ModalFooter = styled.button`
 `;
 
 function Modal(props) {
+  const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.modal.isOpen);
+
   return (
-
-    //  props.isOpen && 
-
-    <ModalOverlay>
-      <ModalWindow>
-        <ModalClose> x </ModalClose>
-        <ModalBody> Hello, modal </ModalBody> 
-        <ModalFooter> Submit </ModalFooter>
-      </ModalWindow>
-      
-    </ModalOverlay>
-
-    
+    isOpen && (
+      <ModalOverlay
+        onClick={() => {
+          dispatch(closeModal());
+        }}
+      >
+        <ModalWindow onClick={(e) => e.stopPropagation()}>
+          <ModalClose
+            onClick={() => {
+              dispatch(closeModal());
+            }}
+          >
+            {" "}
+            x{" "}
+          </ModalClose>
+          <ModalBody> Hello, modal </ModalBody>
+          <ModalFooter> Submit </ModalFooter>
+        </ModalWindow>
+      </ModalOverlay>
+    )
   );
 }
 

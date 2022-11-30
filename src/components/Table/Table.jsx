@@ -30,14 +30,12 @@ function Table() {
 
   const coins = useSelector((state) => state.coins.coins);
 
-
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getCoins());
-  },[dispatch])
-  
+  }, [dispatch]);
 
   return (
-    <>    
+    <>
       <StyledTable>
         <Thead>
           <Tr>
