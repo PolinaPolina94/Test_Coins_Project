@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { addCoin } from "../../redux/portfolio-reducer";
 import { getCoinInfo } from "../../redux/coin-reducer";
+import { showModal } from "../../redux/modal-reducer";
 
 const Container = styled.div`
   // display: inline;
@@ -61,7 +61,7 @@ function CoinInfo(props) {
           {" "}
           <button
             onClick={() => {
-              dispatch(addCoin(coinInfo.name));
+              dispatch(showModal(true, coinInfo.name));
             }}
           >
             {" "}

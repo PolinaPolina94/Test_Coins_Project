@@ -3,6 +3,7 @@ const CLOSE_MODAL = "CLOSE_MODAL";
 
 const initialState = {
   isOpen: false,
+  name: null,
 };
 
 const ModalReducer = (state = initialState, action) => {
@@ -11,6 +12,7 @@ const ModalReducer = (state = initialState, action) => {
       return {
         ...state,
         isOpen: true,
+        name: action.name,
       };
     case CLOSE_MODAL:
       return {
@@ -22,8 +24,8 @@ const ModalReducer = (state = initialState, action) => {
   }
 };
 
-export const showModal = (isOpen) => {
-  return { type: SHOW_MODAL, isOpen };
+export const showModal = (isOpen, name) => {
+  return { type: SHOW_MODAL, isOpen, name };
 };
 
 export const closeModal = (isOpen) => {

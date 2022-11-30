@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../redux/modal-reducer";
+import { addCoin } from "../../redux/portfolio-reducer";
+import { NavLink } from "react-router-dom";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -12,21 +14,7 @@ const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  // transform: scale(1);
-  // transform: ${(props) => (props.active ? "scale(1)" : "scale(0)")};
 `;
-
-// const ModalOverlayActive = styled.div`
-// position: fixed;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgba(0, 0, 0, 0.4);
-//   bottom: 0;
-//   display:flex;
-//   align-items: center;
-//   justify-content: center;
-//   transform: scale(0);
-// `
 
 const ModalWindow = styled.div`
   width: 500px;
@@ -68,6 +56,8 @@ const ModalFooter = styled.button`
 function Modal(props) {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.isOpen);
+  const name = useSelector((state) => state.modal.name);
+  const [count, setCount] = useState(0);
 
   return (
     isOpen && (
@@ -85,8 +75,41 @@ function Modal(props) {
             {" "}
             x{" "}
           </ModalClose>
-          <ModalBody> Hello, modal </ModalBody>
-          <ModalFooter> Submit </ModalFooter>
+
+          <ModalBody>
+            {" "}
+            {name}
+            <div>
+              <button
+                onClick={() => {
+                  setCount(count - 1);
+                }}
+              >
+                {" "}
+                minus{" "}
+              </button>
+              <div> {count} </div>
+              <button
+                onClick={() => {
+                  setCount(count + 1);
+                }}
+              >
+                {" "}
+                plus{" "}
+              </button>
+            </div>
+          </ModalBody>
+          <NavLink to={"/portfolio"}>
+            <ModalFooter
+              onClick={() => {
+                dispatch(addCoin(name));
+                dispatch(closeModal());
+              }}
+            >
+              {" "}
+              Submit{" "}
+            </ModalFooter>
+          </NavLink>
         </ModalWindow>
       </ModalOverlay>
     )

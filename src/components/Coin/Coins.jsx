@@ -44,28 +44,17 @@ function Coins(props) {
   return (
     <Td>
       {" "}
-      <StyledNavLink to={path}> {props.id}</StyledNavLink>
-      {/* <StyledNavLink to={"/portfolio"}> */}{" "}
+      <StyledNavLink to={path}> {props.id}</StyledNavLink>{" "}
       <Button
         onClick={() => {
-          dispatch(showModal(true));
+          dispatch(showModal(true, props.name));
         }}
       >
         {" "}
         +{" "}
       </Button>{" "}
-      {/* </StyledNavLink> */}
     </Td>
   );
 }
 
 export default Coins;
-
-// <Button
-//           onClick={() => {
-//             props.addCoin(props.name);
-//           }}
-//         >
-//           {" "}
-//           +{" "}
-//         </Button>{" "}

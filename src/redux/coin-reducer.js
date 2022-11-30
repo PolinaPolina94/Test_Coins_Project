@@ -39,7 +39,6 @@ export const getCoins = () => {
 export const getCoinInfo = (coinId) => {
   return async (dispatch) => {
     let coinInfo = await coinAPI.getCoinInfo(coinId);
-    // debugger;
     dispatch(setCoinsInfo(coinInfo));
   };
 };
