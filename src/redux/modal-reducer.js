@@ -4,6 +4,7 @@ const CLOSE_MODAL = "CLOSE_MODAL";
 const initialState = {
   isOpen: false,
   name: null,
+  price: 0
 };
 
 const ModalReducer = (state = initialState, action) => {
@@ -13,6 +14,7 @@ const ModalReducer = (state = initialState, action) => {
         ...state,
         isOpen: true,
         name: action.name,
+        price: action.price
       };
     case CLOSE_MODAL:
       return {
@@ -24,8 +26,8 @@ const ModalReducer = (state = initialState, action) => {
   }
 };
 
-export const showModal = (isOpen, name) => {
-  return { type: SHOW_MODAL, isOpen, name };
+export const showModal = (isOpen, name, price) => {
+  return { type: SHOW_MODAL, isOpen, name, price};
 };
 
 export const closeModal = (isOpen) => {

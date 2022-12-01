@@ -1,7 +1,14 @@
 import React from "react";
 
 function Item(props) {
-  return <li> {props.name} </li>;
+  return (
+  
+    <div>
+      {" "}
+      {props.name} 
+      <div>{props.price}</div>{" "}
+    </div>
+    );
 }
 
 export default Item;

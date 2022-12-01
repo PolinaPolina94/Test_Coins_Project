@@ -8,12 +8,13 @@ const PortfolioReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_COIN:
       let newCoinName = action.coinName;
-      let coinPrice = action.coinPrice;
+      let coinPrice = action.coinPrice; 
       return {
         ...state,
         listOfMyCoins: [
           ...state.listOfMyCoins,
-          { name: newCoinName, price: coinPrice },
+          { name: newCoinName},
+          { price: coinPrice}
         ],
       };
     default:

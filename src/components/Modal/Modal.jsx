@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { closeModal } from "../../redux/modal-reducer";
@@ -57,7 +57,13 @@ function Modal(props) {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.modal.isOpen);
   const name = useSelector((state) => state.modal.name);
-  const [count, setCount] = useState(0);
+  const price = useSelector((state) => state.modal.price);
+ 
+  
+  
+  // const increment = () => setpriceCount(priceCount + 1);
+  // const decrement = () => setpriceCount(priceCount - 1);
+
 
   return (
     isOpen && (
@@ -78,31 +84,32 @@ function Modal(props) {
 
           <ModalBody>
             {" "}
-            {name}
+            <div>{name}</div>
+            {/* <div>Price: {price} </div> */}
             <div>
-              <button
+              {/* <button
                 onClick={() => {
-                  setCount(count - 1);
+                  increment();
                 }}
               >
                 {" "}
                 minus{" "}
-              </button>
-              <div> {count} </div>
-              <button
+              </button> */}
+              <div> Price: {price} </div>
+              {/* <button
                 onClick={() => {
-                  setCount(count + 1);
+                  decrement();
                 }}
               >
                 {" "}
                 plus{" "}
-              </button>
+              </button> */}
             </div>
           </ModalBody>
           <NavLink to={"/portfolio"}>
             <ModalFooter
               onClick={() => {
-                dispatch(addCoin(name));
+                dispatch(addCoin(name, price));
                 dispatch(closeModal());
               }}
             >

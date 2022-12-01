@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { showModal } from "../../redux/modal-reducer";
 import { useDispatch } from "react-redux";
-// import Modal from "../Modal/Modal";
+
 
 const Td = styled.td`
   width: 250px;
@@ -47,7 +47,7 @@ function Coins(props) {
       <StyledNavLink to={path}> {props.id}</StyledNavLink>{" "}
       <Button
         onClick={() => {
-          dispatch(showModal(true, props.name));
+          dispatch(showModal(true, props.name, props.price));
         }}
       >
         {" "}

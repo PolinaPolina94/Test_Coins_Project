@@ -16,7 +16,7 @@ function App() {
       <div>
         <HashRouter>
           <Header />
-          <Modal isOpen={isOpen} />
+          <Modal isOpen={isOpen}/>
           <Routes>
             <Route exact path="/" element={<Table />} />
             <Route exact path="/:coinId" element={<CoinInfo />} />

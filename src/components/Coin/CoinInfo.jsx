@@ -61,7 +61,7 @@ function CoinInfo(props) {
           {" "}
           <button
             onClick={() => {
-              dispatch(showModal(true, coinInfo.name));
+              dispatch(showModal(true, coinInfo.name, coinInfo.priceUsd));
             }}
           >
             {" "}

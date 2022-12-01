@@ -55,7 +55,7 @@ function Table() {
         {coins.map((coin) => (
           <tbody>
             <Tr>
-              <Coins id={coin.id} name={coin.name} />
+              <Coins id={coin.id} name={coin.name} price={coin.priceUsd}/>
               <Td> {coin.rank} </Td>
               <Td> {coin.symbol} </Td>
               <Td> {coin.name} </Td>
