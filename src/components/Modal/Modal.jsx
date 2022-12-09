@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { closeModal } from "../../redux/modal-reducer";
+import {
+  closeModal,
+  incrementPrice,
+  decrementPrice,
+} from "../../redux/modal-reducer";
 import { addCoin } from "../../redux/portfolio-reducer";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+// import ModalForm from "../Form/Form";
 
 const ModalOverlay = styled.div`
   position: fixed;
@@ -58,12 +64,11 @@ function Modal(props) {
   const isOpen = useSelector((state) => state.modal.isOpen);
   const name = useSelector((state) => state.modal.name);
   const price = useSelector((state) => state.modal.price);
- 
-  
-  
-  // const increment = () => setpriceCount(priceCount + 1);
-  // const decrement = () => setpriceCount(priceCount - 1);
 
+  const decrement = () => dispatch(decrementPrice(price));
+  const increment = () => dispatch(incrementPrice(price));
+
+  const [newPrice, setNewPrice] = useState(price);
 
   return (
     isOpen && (
@@ -85,32 +90,43 @@ function Modal(props) {
           <ModalBody>
             {" "}
             <div>{name}</div>
-            {/* <div>Price: {price} </div> */}
             <div>
-              {/* <button
+              <button
                 onClick={() => {
-                  increment();
-                }}
-              >
-                {" "}
-                minus{" "}
-              </button> */}
-              <div> Price: {price} </div>
-              {/* <button
-                onClick={() => {
-                  decrement();
+                  dispatch(increment(price));
                 }}
               >
                 {" "}
                 plus{" "}
-              </button> */}
+              </button>
+              <div> Price for coin: {price} </div>
+              <button
+                onClick={() => {
+                  dispatch(decrement(price));
+                }}
+              >
+                {" "}
+                minus{" "}
+              </button>
             </div>
+            <form>
+              <input
+                type="number"
+                name="coinCount"
+                placeholder="count"
+                onChange={(e) => {
+                  setNewPrice(e.target.value * price);
+                }}
+              ></input>
+              <div> General sum: {newPrice}</div>
+            </form>
           </ModalBody>
           <NavLink to={"/portfolio"}>
             <ModalFooter
               onClick={() => {
-                dispatch(addCoin(name, price));
+                dispatch(addCoin(name, newPrice));
                 dispatch(closeModal());
+                
               }}
             >
               {" "}

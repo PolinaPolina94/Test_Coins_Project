@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route, HashRouter } from "react-router-dom";
-// import React, { useState } from "react";
 import Header from "./components/Header/Header";
 import Modal from "./components/Modal/Modal";
 import Table from "./components/Table/Table";
