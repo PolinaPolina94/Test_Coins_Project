@@ -126,7 +126,7 @@ function Modal(props) {
               onClick={() => {
                 dispatch(addCoin(name, newPrice));
                 dispatch(closeModal());
-                
+                setNewPrice(0);
               }}
             >
               {" "}
