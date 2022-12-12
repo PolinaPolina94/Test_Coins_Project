@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import {
   closeModal,
-  incrementPrice,
-  decrementPrice,
+  // incrementPrice,
+  // decrementPrice,
 } from "../../redux/modal-reducer";
 import { addCoin } from "../../redux/portfolio-reducer";
 import { NavLink } from "react-router-dom";
@@ -65,8 +65,8 @@ function Modal(props) {
   const name = useSelector((state) => state.modal.name);
   const price = useSelector((state) => state.modal.price);
 
-  const decrement = () => dispatch(decrementPrice(price));
-  const increment = () => dispatch(incrementPrice(price));
+  // const decrement = () => dispatch(decrementPrice(price));
+  // const increment = () => dispatch(incrementPrice(price));
 
   const [newPrice, setNewPrice] = useState(price);
 
@@ -91,23 +91,23 @@ function Modal(props) {
             {" "}
             <div>{name}</div>
             <div>
-              <button
+              {/* <button
                 onClick={() => {
                   dispatch(increment(price));
                 }}
               >
                 {" "}
                 plus{" "}
-              </button>
+              </button> */}
               <div> Price for coin: {price} </div>
-              <button
+              {/* <button
                 onClick={() => {
                   dispatch(decrement(price));
                 }}
               >
                 {" "}
                 minus{" "}
-              </button>
+              </button> */}
             </div>
             <form>
               <input
