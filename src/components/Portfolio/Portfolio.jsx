@@ -1,17 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import PortfolioList from "./PortfolioList";
-import styled from "styled-components";
 import { useSelector } from "react-redux";
-
-const Button = styled.button`
-  background: #eee;
-  color: black;
-`;
-const Header = styled.h2`
-  font-size: 24px;
-  color: yellow;
-`;
+import { Button, Header } from "../../styled-components/Portfolio-styles";
 
 function Portfolio(props) {
   const navigate = useNavigate();

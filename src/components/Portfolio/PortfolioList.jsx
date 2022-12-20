@@ -1,19 +1,6 @@
 import React from "react";
 import Item from "./Item";
-import styled from "styled-components";
-
-const List = styled.div`
-  font-size: 16px;
-  text-align: left;
-  margin-left: 40px;
-  margin-top: 50px;
-  padding-top: 5px;
-  
-`;
-const Block = styled.div`
-  font-size: 16px;
-  color: black;
-`;
+import { List, Block } from "../../styled-components/Portfolio-styles";
 
 function PortfolioList(props) {
   const coinElement = [...props.listOfMyCoins].map((c) => {

@@ -1,45 +1,15 @@
 import React, { useEffect } from "react";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getCoinInfo } from "../../redux/coin-reducer";
 import { showModal } from "../../redux/modal-reducer";
-
-const Container = styled.div`
-  // display: inline;
-`;
-const BackButton = styled.button`
-  position: absolute;
-  left: 10px;
-  top: 10px;
-`;
-const CoinInfoItem = styled.div`
-  background: #eee;
-  color: rgb(37, 30, 30);
-  border-bottom: 1px solid black;
-  font-size: 16px;
-  padding: 20px 10px;
-  text-align: center;
-  margin: auto;
-  margin-bottom: 5px;
-  width: 50%;
-`;
-const CoinInfoWithButtons = styled.div`
-  position: relative;
-  background: #eee;
-  color: rgb(37, 30, 30);
-  border-bottom: 1px solid black;
-  font-size: 16px;
-  padding: 20px 10px;
-  text-align: center;
-  margin: auto;
-  margin-bottom: 5px;
-  width: 50%;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  text-decoration: none;
-`;
+import {
+  Container,
+  BackButton,
+  CoinInfoItem,
+  CoinInfoWithButtons,
+  StyledNavLink,
+} from "../../styled-components/Coin-styles";
 
 function CoinInfo(props) {
   const navigate = useNavigate();

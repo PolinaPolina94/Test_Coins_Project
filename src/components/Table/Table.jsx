@@ -1,29 +1,13 @@
 import React, { useEffect } from "react";
 import Coins from "../Coin/Coins";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { getCoins } from "../../redux/coin-reducer";
-
-const StyledTable = styled.table`
-   {
-    background-color: blanchedalmond;
-    margin-top: 10px;
-  }
-`;
-const Thead = styled.thead`
-  background-color: #eee;
-`;
-
-const Tr = styled.tr`
-  color: black;
-  border: 1px solid rgb(153, 169, 85);
-`;
-const Td = styled.td`
-  border-bottom: 2px solid green;
-  :hover {
-    background-color: yellow;
-  }
-`;
+import {
+  StyledTable,
+  Thead,
+  Tr,
+  Td,
+} from "../../styled-components/Table-styles";
 
 function Table() {
   const dispatch = useDispatch();
